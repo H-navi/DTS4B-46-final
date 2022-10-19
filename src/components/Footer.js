@@ -40,11 +40,11 @@ function Footer() {
                                             <form action="#">
                                                 <div className="binduz-er-input-box">
                                                     <i className="fal fa-user"></i>
-                                                    <input type="text" placeholder="Enter your name"/>
+                                                    <input type="text" placeholder="Enter your name" />
                                                 </div>
                                                 <div className="binduz-er-input-box">
                                                     <i className="fal fa-envelope"></i>
-                                                    <input type="email" placeholder="Enter email address"/>
+                                                    <input type="email" placeholder="Enter email address" />
                                                 </div>
                                                 <div className="binduz-er-input-box">
                                                     <button type="button"><i className="fal fa-paper-plane"></i> Subscribe Now</button>
@@ -62,7 +62,7 @@ function Footer() {
                                             <div className="binduz-er-sidebar-latest-post-box">
                                                 <div className="binduz-er-sidebar-latest-post-item">
                                                     <div className="binduz-er-thumb">
-                                                        <img src="assets/images/latest-post-1.jpg" alt="latest"/>
+                                                        <img src="assets/images/latest-post-1.jpg" alt="latest" />
                                                     </div>
                                                     <div className="binduz-er-content">
                                                         <span><i className="fal fa-calendar-alt"></i> 24th February 2020</span>
@@ -71,7 +71,7 @@ function Footer() {
                                                 </div>
                                                 <div className="binduz-er-sidebar-latest-post-item">
                                                     <div className="binduz-er-thumb">
-                                                        <img src="assets/images/latest-post-2.jpg" alt="latest"/>
+                                                        <img src="assets/images/latest-post-2.jpg" alt="latest" />
                                                     </div>
                                                     <div className="binduz-er-content">
                                                         <span><i className="fal fa-calendar-alt"></i> 24th February 2020</span>
@@ -87,7 +87,7 @@ function Footer() {
                         <div className="col-lg-3">
                             <div className="binduz-er-footer-widget-info">
                                 <div className="binduz-er-logo">
-                                    <a href="#"><img src="assets/images/logo-2.png" alt=""/></a>
+                                    <a href="#"><img src="assets/images/logo-2.png" alt="" /></a>
                                 </div>
                                 <div className="binduz-er-text">
                                     <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspend isse ultrices gravida.</p>
@@ -127,6 +127,9 @@ function Footer() {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="binduz-er-back-to-top">
+                <p>BACK TO TOP <i className="fal fa-long-arrow-right"></i></p>
             </div>
         </Fragment>
     );
