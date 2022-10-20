@@ -4,14 +4,14 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import NewsSlider from '../components/SliderItem';
 import NewsSliderChild from '../components/SliderItemChild';
-import useNewxStore, { selectFetchNews, selectNews, selectNewsReady, selectSortNews } from '../store/news';
+import useNewsSlidersStore, { selectFetchNews, selectNews, selectNewsReady, selectSortNews } from '../store/newsSliders';
 
 const Sliders = () => {
     const [queryParams, setQueryparams] = useSearchParams();
-    const news = useNewxStore(selectNews);
-    const fetchNews = useNewxStore(selectFetchNews);
-    const newsReady = useNewxStore(selectNewsReady);
-    const sortNews = useNewxStore(selectSortNews);
+    const news = useNewsSlidersStore(selectNews);
+    const fetchNews = useNewsSlidersStore(selectFetchNews);
+    const newsReady = useNewsSlidersStore(selectNewsReady);
+    const sortNews = useNewsSlidersStore(selectSortNews);
 
     useEffect(() => {
         fetchNews();
@@ -28,15 +28,15 @@ const Sliders = () => {
         console.log(nextPage);
     }, [queryParams]);
 
-    const setSortParam = (type) => {
-        queryParams.set("sort", type);
-        setQueryparams(queryParams);
-    }
+    // const setSortParam = (type) => {
+    //     queryParams.set("sort", type);
+    //     setQueryparams(queryParams);
+    // }
 
-    const setNextPage = (page) => {
-        queryParams.set("page", page);
-        setQueryparams(queryParams);
-    }
+    // const setNextPage = (page) => {
+    //     queryParams.set("page", page);
+    //     setQueryparams(queryParams);
+    // }
 
     return (
         <Fragment>

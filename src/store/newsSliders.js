@@ -2,18 +2,18 @@ import produce from 'immer';
 import create from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import tmdb from '../apis/nytimes';
+import news from '../apis/nytimes';
 
 const initialNews = [];
 
-const useNewxStore = create(
+const useNewsSlidersStore = create(
     persist(
         (set) => ({
             news: initialNews,
             newsReady: false,
             fetchNews: async() => {
                 try {
-                    const { data } = await tmdb.get("news/v3/content/all/all.json?limit=3");
+                    const { data } = await news.get("news/v3/content/all/all.json?limit=3");
 
                     set(produce((state) => {
                         state.news = data.results;
@@ -50,4 +50,4 @@ export const selectFetchNews = (state) => state.fetchNews;
 export const selectNewsReady = (state) => state.newsReady;
 export const selectSortNews = (state) => state.sortNews;
 
-export default useNewxStore;
+export default useNewsSlidersStore;
