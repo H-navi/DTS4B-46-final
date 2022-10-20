@@ -1,14 +1,14 @@
 import logo from './logo.svg';
 // import './App.css';
-import HeaderRecomendation from './components/HeaderRecomendation';
-import Header from './components/Header';
-import Sliders from './components/Sliders';
-import Trending from './components/Trending';
-import Featured from './components/Featured';
-import VideoPosts from './components/VideoPosts';
-import TrendingToday from './components/TrendingToday';
-import MainPosts from './components/MainPosts';
-import Footer from './components/Footer';
+import HeaderRecomendation from './containers/HeaderRecomendation';
+import Header from './containers/Header';
+import Sliders from './containers/Sliders';
+import Trending from './containers/Trending';
+import Featured from './containers/Featured';
+import VideoPosts from './containers/VideoPosts';
+import TrendingToday from './containers/TrendingToday';
+import MainPosts from './containers/MainPosts';
+import Footer from './containers/Footer';
 
 function App() {
   return (
