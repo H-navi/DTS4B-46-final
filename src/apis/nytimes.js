@@ -6,7 +6,7 @@ const baseUrl = 'https://api.nytimes.com/svc/';
 const tmdb = axios.create({
     baseURL: baseUrl,
     params: {
-        api_key: API_KEY,
+        'api-key': API_KEY,
     },
 });
 

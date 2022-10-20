@@ -13,7 +13,7 @@ const useNewxStore = create(
             newsReady: false,
             fetchNews: async() => {
                 try {
-                    const { data } = await tmdb.get("https://api.nytimes.com/svc/news/v3/content/all/all.json");
+                    const { data } = await tmdb.get("news/v3/content/all/all.json?limit=3");
 
                     set(produce((state) => {
                         state.news = data.results;

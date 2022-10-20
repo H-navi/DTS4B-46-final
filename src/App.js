@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 // import './App.css';
+import { Outlet } from 'react-router-dom';
+
 import HeaderRecomendation from './containers/HeaderRecomendation';
 import Header from './containers/Header';
 import Sliders from './containers/Sliders';
@@ -22,6 +24,8 @@ function App() {
       <TrendingToday/>
       <MainPosts/>
       <Footer/>
+
+      <Outlet/>
 
     </div>
   );
