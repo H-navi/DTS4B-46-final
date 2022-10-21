@@ -2,33 +2,42 @@ import React, { Fragment, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import NewsTrendingHeadline from '../components/TrendingHeadlineItem';
 import NewsTrending from '../components/TrendingItem';
-import useNewsTrendingsStore, { selectFetchMagazineNews, selectFetchSportsNews, selectFetchTechnoNews, selectFetchWorldNews, selectMagazineNews, selectMagazineNewsReady, selectSportsNews, selectSportsNewsReady, selectTechnoNews, selectTechnoNewsReady, selectWorldNews, selectWorldNewsReady } from '../store/newsTrendings';
+import { selectAllTechno, selectFetchAllTechno } from '../store/bySection/techno';
+import useMagazineStore, { selectFetchMagazine, selectMagazine, selectMagazineReady } from '../store/bySection/magazine';
+import useSportsStore, { selectFetchSports, selectSports, selectSportsReady } from '../store/bySection/sports';
+import useTechnoStore, { selectFetchTechno, selectTechno, selectTechnoReady } from '../store/bySection/techno';
+import useWorldStore, { selectFetchWorld, selectWorld, selectWorldReady } from '../store/bySection/world';
 
 
 const Trending = () => {
     const [queryParams] = useSearchParams();
-    const technoNews = useNewsTrendingsStore(selectTechnoNews);
-    const fetchTechnoNews = useNewsTrendingsStore(selectFetchTechnoNews);
-    const technoNewsReady = useNewsTrendingsStore(selectTechnoNewsReady);
+    const technoNews = useTechnoStore(selectTechno);
+    const fetchTechnoNews = useTechnoStore(selectFetchTechno);
 
-    const sportsNews = useNewsTrendingsStore(selectSportsNews);
-    const fetchSportsNews = useNewsTrendingsStore(selectFetchSportsNews);
-    const sportsNewsReady = useNewsTrendingsStore(selectSportsNewsReady);
+    const allTechnoNews = useTechnoStore(selectAllTechno);
+    const fetchAllTechnoNews = useTechnoStore(selectFetchAllTechno);
+    const technoNewsReady = useTechnoStore(selectTechnoReady);
 
-    const magazineNews = useNewsTrendingsStore(selectMagazineNews);
-    const fetchMagazineNews = useNewsTrendingsStore(selectFetchMagazineNews);
-    const magazineNewsReady = useNewsTrendingsStore(selectMagazineNewsReady);
+    const sportsNews = useSportsStore(selectSports);
+    const fetchSportsNews = useSportsStore(selectFetchSports);
+    const sportsNewsReady = useSportsStore(selectSportsReady);
 
-    const worldNews = useNewsTrendingsStore(selectWorldNews);
-    const fetchWorldNews = useNewsTrendingsStore(selectFetchWorldNews);
-    const worldNewsReady = useNewsTrendingsStore(selectWorldNewsReady);
+    const magazineNews = useMagazineStore(selectMagazine);
+    const fetchMagazineNews = useMagazineStore(selectFetchMagazine);
+    const magazineNewsReady = useMagazineStore(selectMagazineReady);
+
+    const worldNews = useWorldStore(selectWorld);
+    const fetchWorldNews = useWorldStore(selectFetchWorld);
+    const worldNewsReady = useWorldStore(selectWorldReady);    
 
     useEffect(() => {
-        fetchTechnoNews();
-        fetchSportsNews();
-        fetchMagazineNews();
-        fetchWorldNews();
-    });
+        fetchTechnoNews(3);
+        fetchAllTechnoNews();
+
+        fetchSportsNews(3);
+        fetchMagazineNews(3);
+        fetchWorldNews(3);
+    }, []);
 
     useEffect(() => {
         if (!technoNewsReady) return;
@@ -38,6 +47,7 @@ const Trending = () => {
 
     }, [queryParams, technoNewsReady, sportsNewsReady, magazineNewsReady, worldNewsReady]);
 
+    // console.log(allTechnoNews[4]);
 
     return (
         <Fragment>
@@ -77,7 +87,7 @@ const Trending = () => {
                                                 <div className="row">
                                                     <div className="col-lg-7 col-md-6">
                                                         <div className="binduz-er-trending-box">
-                                                            {/* <NewsTrendingHeadline/> */}
+                                                            <NewsTrendingHeadline news={allTechnoNews[4]}/>
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-5 col-md-6">

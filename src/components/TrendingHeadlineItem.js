@@ -2,13 +2,14 @@ import * as React from 'react';
 
 
 const NewsTrendingHeadline = ({ news }) => {
-    // let bg = '';    
-    // if (news.thumbnail_standard != null) {
-    //     bg = news.thumbnail_standard;
-    // }
+    // console.log(news.title);
+    let bg = '';    
+    if (news.thumbnail_standard != null) {
+        bg = news.thumbnail_standard;
+    }
     return (
         <div className="binduz-er-trending-news-item">
-            <img src="" alt="" />
+            <img src={bg} alt="" />
             <div className="binduz-er-trending-news-overlay">
                 <div className="binduz-er-trending-news-meta">
                     <div className="binduz-er-meta-categories">

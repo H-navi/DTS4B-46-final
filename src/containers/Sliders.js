@@ -15,7 +15,7 @@ const Sliders = () => {
 
     useEffect(() => {
         fetchNews();
-    });
+    }, []);
 
     useEffect(() => {
         if(!newsReady) return;
@@ -25,7 +25,7 @@ const Sliders = () => {
 
     useEffect(() => {
         const nextPage = queryParams.get('page');
-        console.log(nextPage);
+        // console.log(nextPage);
     }, [queryParams]);
 
     // const setSortParam = (type) => {

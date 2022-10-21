@@ -12,16 +12,14 @@ const useNewsSlidersStore = create(
             news: initialNews,
             newsReady: false,
             fetchNews: async() => {
-                try {
-                    const { data } = await news.get("news/v3/content/all/all.json?limit=3");
 
-                    set(produce((state) => {
-                        state.news = data.results;
-                        state.newsReady = true;
-                    }))
-                } catch (error) {
-                    console.log(error);
-                }
+                const { data } = await news.get("news/v3/content/all/all.json?limit=3");
+
+                set(produce((state) => {
+                    state.news = data.results;
+                    state.newsReady = true;
+                }))
+
             },
             sortNews: (type) => {
                 if (type === 'asc') {
