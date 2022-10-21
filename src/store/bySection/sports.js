@@ -9,14 +9,23 @@ const initialNews = [];
 const useSportsStore = create(
     persist(
         (set) => ({
-            sports: initialNews,
+            news: initialNews,
             sportsReady: false,
             fetchSports: async(limit) => {
 
                 const { data } = await news.get(`news/v3/content/all/sports.json?limit=${limit}`);
 
                 set(produce((state) => {
-                    state.sports = data.results;
+                    state.news = data.results;
+                    state.sportsReady = true;
+                }))
+
+            },
+            fetchAllSports: async() => {
+                const { data } = await news.get(`news/v3/content/all/sports.json`);
+
+                set(produce((state) => {
+                    state.allNews = data.results;
                     state.sportsReady = true;
                 }))
 
@@ -29,8 +38,12 @@ const useSportsStore = create(
 );
 
 // selector bisa dibuat di sini, biar bisa reusesable
-export const selectSports = (state) => state.sports;
+export const selectSports = (state) => state.news;
 export const selectFetchSports = (state) => state.fetchSports;
+
+export const selectAllSports = (state) => state.allNews;
+export const selectFetchAllSports = (state) => state.fetchAllSports;
+
 export const selectSportsReady = (state) => state.sportsReady;
 
 export default useSportsStore;

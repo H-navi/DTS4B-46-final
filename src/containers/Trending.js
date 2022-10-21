@@ -4,7 +4,7 @@ import NewsTrendingHeadline from '../components/TrendingHeadlineItem';
 import NewsTrending from '../components/TrendingItem';
 import { selectAllTechno, selectFetchAllTechno } from '../store/bySection/techno';
 import useMagazineStore, { selectFetchMagazine, selectMagazine, selectMagazineReady } from '../store/bySection/magazine';
-import useSportsStore, { selectFetchSports, selectSports, selectSportsReady } from '../store/bySection/sports';
+import useSportsStore, { selectAllSports, selectFetchAllSports, selectFetchSports, selectSports, selectSportsReady } from '../store/bySection/sports';
 import useTechnoStore, { selectFetchTechno, selectTechno, selectTechnoReady } from '../store/bySection/techno';
 import useWorldStore, { selectFetchWorld, selectWorld, selectWorldReady } from '../store/bySection/world';
 
@@ -13,13 +13,16 @@ const Trending = () => {
     const [queryParams] = useSearchParams();
     const technoNews = useTechnoStore(selectTechno);
     const fetchTechnoNews = useTechnoStore(selectFetchTechno);
-
     const allTechnoNews = useTechnoStore(selectAllTechno);
     const fetchAllTechnoNews = useTechnoStore(selectFetchAllTechno);
     const technoNewsReady = useTechnoStore(selectTechnoReady);
 
     const sportsNews = useSportsStore(selectSports);
     const fetchSportsNews = useSportsStore(selectFetchSports);
+
+    const allSportsNews = useSportsStore(selectAllSports);
+    const fetchAllSportsNews = useSportsStore(selectFetchAllSports);
+
     const sportsNewsReady = useSportsStore(selectSportsReady);
 
     const magazineNews = useMagazineStore(selectMagazine);
@@ -28,13 +31,15 @@ const Trending = () => {
 
     const worldNews = useWorldStore(selectWorld);
     const fetchWorldNews = useWorldStore(selectFetchWorld);
-    const worldNewsReady = useWorldStore(selectWorldReady);    
+    const worldNewsReady = useWorldStore(selectWorldReady);
 
     useEffect(() => {
         fetchTechnoNews(3);
         fetchAllTechnoNews();
 
         fetchSportsNews(3);
+        fetchAllSportsNews();
+
         fetchMagazineNews(3);
         fetchWorldNews(3);
     }, []);
@@ -47,7 +52,7 @@ const Trending = () => {
 
     }, [queryParams, technoNewsReady, sportsNewsReady, magazineNewsReady, worldNewsReady]);
 
-    // console.log(allTechnoNews[4]);
+    console.log(fetchAllSportsNews());
 
     return (
         <Fragment>
@@ -87,7 +92,7 @@ const Trending = () => {
                                                 <div className="row">
                                                     <div className="col-lg-7 col-md-6">
                                                         <div className="binduz-er-trending-box">
-                                                            <NewsTrendingHeadline news={allTechnoNews[4]}/>
+                                                            <NewsTrendingHeadline news={allTechnoNews[4]} />
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-5 col-md-6">
@@ -105,25 +110,7 @@ const Trending = () => {
                                                 <div className="row">
                                                     <div className="col-lg-7 col-md-6">
                                                         <div className="binduz-er-trending-box">
-                                                            <div className="binduz-er-trending-news-item">
-                                                                <img src="assets/images/trending-thumb.png" alt="" />
-                                                                <div className="binduz-er-trending-news-overlay">
-                                                                    <div className="binduz-er-trending-news-meta">
-                                                                        <div className="binduz-er-meta-categories">
-                                                                            <a href="#">Technology</a>
-                                                                        </div>
-                                                                        <div className="binduz-er-meta-date">
-                                                                            <span><i className="fal fa-calendar-alt"></i> 24th February 2020</span>
-                                                                        </div>
-                                                                        <div className="binduz-er-trending-news-title">
-                                                                            <h3 className="binduz-er-title"><a href="#">A DJ’s mission to tell Asian American stories, track by track</a></h3>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="binduz-er-news-share">
-                                                                        <a href="#"><i className="fal fa-share"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            <NewsTrendingHeadline news={allSportsNews[4]} />
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-5 col-md-6">
