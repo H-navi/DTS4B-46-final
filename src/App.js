@@ -19,7 +19,7 @@ function App() {
       <Header/>
       <Sliders/>
       <Trending/>
-      <Featured/>
+      {/* <Featured/> */}
       <VideoPosts/>
       <TrendingToday/>
       <MainPosts/>
