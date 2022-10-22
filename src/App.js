@@ -18,9 +18,9 @@ function App() {
       <HeaderRecomendation/>
       <Header/>
       <Sliders/>
-      <Trending/>
+      {/* <Trending/> */}
       {/* <Featured/> */}
-      <VideoPosts/>
+      {/* <VideoPosts/> */}
       <TrendingToday/>
       <MainPosts/>
       <Footer/>
