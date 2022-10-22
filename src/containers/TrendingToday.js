@@ -17,7 +17,6 @@ function TrendingToday() {
         if (!allSectionReady) return;
     }, [queryParams, allSectionReady]);
 
-    // console.log(allSection);
     return (
         <Fragment>
             <section className="binduz-er-trending-today-area">

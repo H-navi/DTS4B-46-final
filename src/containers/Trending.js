@@ -57,7 +57,6 @@ const Trending = () => {
 
     }, [queryParams, technoNewsReady, sportsNewsReady, magazineNewsReady, worldNewsReady]);
 
-    console.log(allTechnoNews);
     return (
         <Fragment>
             <section className="binduz-er-trending-area">
