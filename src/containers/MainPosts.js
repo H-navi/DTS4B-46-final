@@ -1,16 +1,17 @@
 import React, { Fragment, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import MainPostNews from '../components/MainPost';
-import useHomeStore, { selectFetchHome, selectHome, selectHomeReady } from '../store/bySection/home';
+import useGameStore, { selectFetchGame, selectGame, selectGameReady } from '../store/tlmSection/game';
+
 function MainPosts() {
 
     const [queryParams] = useSearchParams();
-    const homeSection = useHomeStore(selectHome);
-    const fetchHomeSection = useHomeStore(selectFetchHome);
-    const allSectionReady = useHomeStore(selectHomeReady);
+    const gameSection = useGameStore(selectGame);
+    const fetchGameSection = useGameStore(selectFetchGame);
+    const allSectionReady = useGameStore(selectGameReady);
 
     useEffect(() => {
-        fetchHomeSection(4);
+        fetchGameSection();
     }, []);
 
     useEffect(() => {
@@ -31,8 +32,8 @@ function MainPosts() {
                             </div>
                             <div className="row">
                                 {
-                                    homeSection.map(home => (
-                                        <MainPostNews key={( home.title )} news={home}/>
+                                    gameSection.slice(0, 6).map(game => (
+                                        <MainPostNews key={( game.title )} news={game}/>
                                     ))
                                 }
                             </div>

@@ -4,46 +4,29 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import NewsSlider from '../components/SliderItem';
 import NewsSliderChild from '../components/SliderItemChild';
-import useNewsSlidersStore, { selectFetchNews, selectNews, selectNewsReady, selectSortNews } from '../store/newsSliders';
+import useGameNewsStore, {selectFetchGameNews, selectGameNews, selectGameNewsReady } from '../store/tlmSection/gameNews';
+
 
 const Sliders = () => {
-    const [queryParams, setQueryparams] = useSearchParams();
-    const news = useNewsSlidersStore(selectNews);
-    const fetchNews = useNewsSlidersStore(selectFetchNews);
-    const newsReady = useNewsSlidersStore(selectNewsReady);
-    const sortNews = useNewsSlidersStore(selectSortNews);
+    const [queryParams] = useSearchParams();
+    const gameNews = useGameNewsStore(selectGameNews);
+    const fetchGameNews = useGameNewsStore(selectFetchGameNews);
+    const gameNewsReady = useGameNewsStore(selectGameNewsReady);
 
     useEffect(() => {
-        fetchNews();
+        fetchGameNews();
     }, []);
 
     useEffect(() => {
-        if(!newsReady) return;
-
-        sortNews(queryParams.get('sort'));
-    }, [queryParams, newsReady]);
-
-    useEffect(() => {
-        const nextPage = queryParams.get('page');
-        // console.log(nextPage);
-    }, [queryParams]);
-
-    // const setSortParam = (type) => {
-    //     queryParams.set("sort", type);
-    //     setQueryparams(queryParams);
-    // }
-
-    // const setNextPage = (page) => {
-    //     queryParams.set("page", page);
-    //     setQueryparams(queryParams);
-    // }
+        if(!gameNewsReady) return;
+    }, [queryParams, gameNewsReady]);
 
     return (
         <Fragment>
             <div className="hero-slide-active">
                 {
-                    news.map(newx => (
-                        <NewsSlider key={(newx.title)} news={newx}/>
+                    gameNews.map(newx => (
+                        <NewsSlider key={(newx.key)} news={newx}/>
                     ))
                 }
             </div>
@@ -51,8 +34,8 @@ const Sliders = () => {
                 <div className="binduz-er-hero-news-portal hero-portal-active">
 
                 {
-                    news.map(news => (
-                        <NewsSliderChild key={(news.title)} news={news}/>
+                    gameNews.map(news => (
+                        <NewsSliderChild key={(news.key)} news={news}/>
                     ))
                 }
                     

@@ -18,10 +18,10 @@ function App() {
       <HeaderRecomendation/>
       <Header/>
       <Sliders/>
-      <Trending/>
+      {/* <Trending/> */}
       {/* <Featured/> */}
       {/* <VideoPosts/> */}
-      <TrendingToday/>
+      {/* <TrendingToday/> */}
       <MainPosts/>
       <Footer/>
 

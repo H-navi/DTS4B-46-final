@@ -1,27 +1,19 @@
 import * as React from 'react';
 
-const BASE_IMAGE_URL = "https://static01.nyt.com";
-
 const NewsSlider = ({ news }) => {
-    let bg = '';    
-    if (news.multimedia == null) {
-        bg = news.thumbnail_standard;
-    }else{
-        bg = news.multimedia[2].url;
-    }
     return (
         <div className="binduz-er-hero-area d-flex align-items-center">
-            <div className="binduz-er-bg-cover" style={{ backgroundImage: `url(${bg})` }}></div>
+            <div className="binduz-er-bg-cover" style={{ backgroundImage: `url(${news.thumb})` }}></div>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-5 col-md-7">
                         <div className="binduz-er-hero-news-content">
                             <div className="binduz-er-hero-meta">
                                 <div className="binduz-er-meta-category">
-                                    <a href="#">{news.section}</a>
+                                    <a href="#">{news.tag}</a>
                                 </div>
                                 <div className="binduz-er-meta-date">
-                                    <span><i className="fal fa-calendar-alt"></i> {news.published_date}</span>
+                                    <span><i className="fal fa-calendar-alt"></i> {news.time}</span>
                                 </div>
                             </div>
                             <div className="binduz-er-hero-title">
@@ -30,7 +22,7 @@ const NewsSlider = ({ news }) => {
                             <div className="binduz-er-meta-author">
                                 <div className="binduz-er-author">
                                     <img src="assets/images/user-1.png" alt="" />
-                                    <span>By <span>{news.byline}</span></span>
+                                    <span>By <span>{news.author}</span></span>
                                 </div>
                                 <div className="binduz-er-meta-list">
                                     <ul>
