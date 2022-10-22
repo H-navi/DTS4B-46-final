@@ -2,61 +2,32 @@ import React, { Fragment, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import NewsTrendingHeadline from '../components/TrendingHeadlineItem';
 import NewsTrending from '../components/TrendingItem';
-import { selectAllTechno, selectFetchAllTechno } from '../store/bySection/techno';
-import useMagazineStore, { selectAllMagazine, selectFetchAllMagazine, selectFetchMagazine, selectMagazine, selectMagazineReady } from '../store/bySection/magazine';
-import useSportsStore, { selectAllSports, selectFetchAllSports, selectFetchSports, selectSports, selectSportsReady } from '../store/bySection/sports';
-import useTechnoStore, { selectFetchTechno, selectTechno, selectTechnoReady } from '../store/bySection/techno';
-import useWorldStore, { selectAllWorld, selectFetchAllWorld, selectFetchWorld, selectWorld, selectWorldReady } from '../store/bySection/world';
-
+import useEsportStore, { selectEsport, selectEsportReady, selectFetchEsport } from '../store/tlmSection/eSport';
+import useTechStore, { selectFetchTech, selectTech, selectTechReady } from '../store/tlmSection/tech';
 
 const Trending = () => {
     const [queryParams] = useSearchParams();
-    const technoNews = useTechnoStore(selectTechno);
-    const fetchTechnoNews = useTechnoStore(selectFetchTechno);
-    const allTechnoNews = useTechnoStore(selectAllTechno);
-    const fetchAllTechnoNews = useTechnoStore(selectFetchAllTechno);
-    const technoNewsReady = useTechnoStore(selectTechnoReady);
+    const techno = useTechStore(selectTech);
+    const fetchTechno = useTechStore(selectFetchTech);   
+    const technoReady = useTechStore(selectTechReady);
 
-    const sportsNews = useSportsStore(selectSports);
-    const fetchSportsNews = useSportsStore(selectFetchSports);
-    const allSportsNews = useSportsStore(selectAllSports);
-    const fetchAllSportsNews = useSportsStore(selectFetchAllSports);
-    const sportsNewsReady = useSportsStore(selectSportsReady);
+    const eSport = useEsportStore(selectEsport);
+    const fetchEsport = useEsportStore(selectFetchEsport);   
+    const eSportReady = useEsportStore(selectEsportReady);
 
-    const magazineNews = useMagazineStore(selectMagazine);
-    const fetchMagazineNews = useMagazineStore(selectFetchMagazine);
-    const allMagazineNews = useMagazineStore(selectAllMagazine);
-    const fetchAllMagazineNews = useMagazineStore(selectFetchAllMagazine);
-    const magazineNewsReady = useMagazineStore(selectMagazineReady);
-
-    const worldNews = useWorldStore(selectWorld);
-    const fetchWorldNews = useWorldStore(selectFetchWorld);
-    const allWorldNews = useWorldStore(selectAllWorld);
-    const fetchAllWorldNews = useWorldStore(selectFetchAllWorld);
-    const worldNewsReady = useWorldStore(selectWorldReady);
-
+   
     useEffect(() => {
-        fetchTechnoNews(3);
-        fetchAllTechnoNews();
-
-        fetchSportsNews(3);
-        fetchAllSportsNews();
-
-        fetchMagazineNews(3);
-        fetchAllMagazineNews();
-
-        fetchWorldNews(3);
-        fetchAllWorldNews();
+        fetchTechno();
+        fetchEsport();
     }, []);
 
     useEffect(() => {
-        if (!technoNewsReady) return;
-        if (!sportsNewsReady) return;
-        if (!magazineNewsReady) return;
-        if (!worldNewsReady) return;
+        if (!technoReady) return;
+        if (!eSportReady) return;
 
-    }, [queryParams, technoNewsReady, sportsNewsReady, magazineNewsReady, worldNewsReady]);
+    }, [queryParams, technoReady, eSportReady]);
 
+    console.log(eSport);
     return (
         <Fragment>
             <section className="binduz-er-trending-area">
@@ -76,7 +47,7 @@ const Trending = () => {
                                             <a className="nav-link active" id="pills-1-tab" data-bs-toggle="pill" href="#pills-1" role="tab" aria-controls="pills-1" aria-selected="true">Technology</a>
                                         </li>
                                         <li className="nav-item" role="presentation">
-                                            <a className="nav-link" id="pills-2-tab" data-bs-toggle="pill" href="#pills-2" role="tab" aria-controls="pills-2" aria-selected="false">Sports</a>
+                                            <a className="nav-link" id="pills-2-tab" data-bs-toggle="pill" href="#pills-2" role="tab" aria-controls="pills-2" aria-selected="false">E-Sports</a>
                                         </li>
                                         <li className="nav-item" role="presentation">
                                             <a className="nav-link" id="pills-3-tab" data-bs-toggle="pill" href="#pills-3" role="tab" aria-controls="pills-3" aria-selected="false">Magazine</a>
@@ -95,14 +66,14 @@ const Trending = () => {
                                                 <div className="row">
                                                     <div className="col-lg-7 col-md-6">
                                                         <div className="binduz-er-trending-box">
-                                                            <NewsTrendingHeadline news={allTechnoNews[4]} />
+                                                            <NewsTrendingHeadline news={techno[4]} />
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-5 col-md-6">
                                                         <div className="binduz-er-trending-news-list-item">
                                                             {
-                                                                technoNews.map(techno => (
-                                                                    <NewsTrending key={(techno.title)} news={techno} />
+                                                                techno.slice(0, 3).map(tech => (
+                                                                    <NewsTrending key={(tech.key)} news={tech} />
                                                                 ))
                                                             }
                                                         </div>
@@ -113,13 +84,13 @@ const Trending = () => {
                                                 <div className="row">
                                                     <div className="col-lg-7 col-md-6">
                                                         <div className="binduz-er-trending-box">
-                                                            <NewsTrendingHeadline news={allSportsNews[4]} />
+                                                            <NewsTrendingHeadline news={eSport[4]} />
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-5 col-md-6">
                                                         <div className="binduz-er-trending-news-list-item">
                                                             {
-                                                                sportsNews.map(sport => (
+                                                                eSport.slice(0, 3).map(sport => (
                                                                     <NewsTrending key={(sport.title)} news={sport} />
                                                                 ))
                                                             }
@@ -131,15 +102,15 @@ const Trending = () => {
                                                 <div className="row">
                                                     <div className="col-lg-7 col-md-6">
                                                         <div className="binduz-er-trending-box">
-                                                            <NewsTrendingHeadline news={allMagazineNews[4]} />
+                                                            {/* <NewsTrendingHeadline news={allMagazineNews[4]} /> */}
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-5 col-md-6">
                                                         <div className="binduz-er-trending-news-list-item">
                                                             {
-                                                                magazineNews.map(magazine => (
-                                                                    <NewsTrending key={(magazine.title)} news={magazine} />
-                                                                ))
+                                                                // magazineNews.map(magazine => (
+                                                                //     <NewsTrending key={(magazine.title)} news={magazine} />
+                                                                // ))
                                                             }
                                                         </div>
                                                     </div>
@@ -149,15 +120,15 @@ const Trending = () => {
                                                 <div className="row">
                                                     <div className="col-lg-7 col-md-6">
                                                         <div className="binduz-er-trending-box">
-                                                            <NewsTrendingHeadline news={allWorldNews[4]} />
+                                                            {/* <NewsTrendingHeadline news={allWorldNews[4]} /> */}
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-5 col-md-6">
                                                         <div className="binduz-er-trending-news-list-item">
                                                             {
-                                                                worldNews.map(world => (
-                                                                    <NewsTrending key={(world.title)} news={world} />
-                                                                ))
+                                                                // worldNews.map(world => (
+                                                                //     <NewsTrending key={(world.title)} news={world} />
+                                                                // ))
                                                             }
                                                         </div>
                                                     </div>
