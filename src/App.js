@@ -15,15 +15,15 @@ import Footer from './containers/Footer';
 function App() {
   return (
     <div className="App">
-      <HeaderRecomendation/>
+      {/* <HeaderRecomendation/>
       <Header/>
-      <Sliders/>
+      <Sliders/> */}
       {/* <Trending/> */}
       {/* <Featured/> */}
       {/* <VideoPosts/> */}
       {/* <TrendingToday/> */}
-      <MainPosts/>
-      <Footer/>
+      {/* <MainPosts/> */}
+      {/* <Footer/> */}
 
       <Outlet/>
 
