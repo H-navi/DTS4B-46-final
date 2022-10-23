@@ -11,10 +11,9 @@ const Trending = () => {
     const fetchTechno = useTechStore(selectFetchTech);   
     const technoReady = useTechStore(selectTechReady);
 
-    const eSport = useEsportStore(selectEsport);
+    const esport = useEsportStore(selectEsport);
     const fetchEsport = useEsportStore(selectFetchEsport);   
-    const eSportReady = useEsportStore(selectEsportReady);
-
+    const esportReady = useEsportStore(selectEsportReady);
    
     useEffect(() => {
         fetchTechno();
@@ -23,11 +22,11 @@ const Trending = () => {
 
     useEffect(() => {
         if (!technoReady) return;
-        if (!eSportReady) return;
+        if (!esportReady) return;
 
-    }, [queryParams, technoReady, eSportReady]);
+    }, [queryParams, technoReady, esportReady]);
 
-    console.log(eSport);
+    console.log(esport);
     return (
         <Fragment>
             <section className="binduz-er-trending-area">
@@ -84,13 +83,13 @@ const Trending = () => {
                                                 <div className="row">
                                                     <div className="col-lg-7 col-md-6">
                                                         <div className="binduz-er-trending-box">
-                                                            <NewsTrendingHeadline news={eSport[4]} />
+                                                            <NewsTrendingHeadline news={esport[4]} />
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-5 col-md-6">
                                                         <div className="binduz-er-trending-news-list-item">
                                                             {
-                                                                eSport.slice(0, 3).map(sport => (
+                                                                esport.slice(0, 3).map(sport => (
                                                                     <NewsTrending key={(sport.title)} news={sport} />
                                                                 ))
                                                             }

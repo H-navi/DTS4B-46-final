@@ -12,7 +12,7 @@ const useEsportStore = create(
             news: initialNews,
             newsReady: false,
             fetchEsport: async() => {
-                const { data } = await news.get(`games`);
+                const { data } = await news.get(`tech`);
 
                 set(produce((state) => {
                     state.news = data;
@@ -21,7 +21,7 @@ const useEsportStore = create(
 
             },
         }), {
-            name: 'esport-storage', // nama untuk menyimpan di storage
+            name: 'games-storage', // nama untuk menyimpan di storage
             getStorage: () => localStorage, // (optional) by default akan 'localStorage', bisa pakai sessionStorage, dll
         }
     )
