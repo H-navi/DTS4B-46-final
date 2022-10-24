@@ -1,7 +1,9 @@
 import React, { Fragment, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import LastestPost from '../components/LastestPost';
 import MainPostNews from '../components/MainPost';
 import useGameStore, { selectFetchGame, selectGame, selectGameReady } from '../store/tlmSection/game';
+import useTechReviewStore, { selectFetchTechReview, selectTechReview, selectTechReviewReady } from '../store/tlmSection/techReview';
 
 function MainPosts() {
 
@@ -10,13 +12,20 @@ function MainPosts() {
     const fetchGameSection = useGameStore(selectFetchGame);
     const allSectionReady = useGameStore(selectGameReady);
 
+    const techReview = useTechReviewStore(selectTechReview);
+    const fetchTechReview = useTechReviewStore(selectFetchTechReview);
+    const teachReviewReady = useTechReviewStore(selectTechReviewReady);
+
     useEffect(() => {
         fetchGameSection();
+        fetchTechReview();
+
     }, []);
 
     useEffect(() => {
         if (!allSectionReady) return;
-    }, [queryParams, allSectionReady]);
+        if (!teachReviewReady) return;
+    }, [queryParams, allSectionReady, teachReviewReady]);
 
 
     return (
@@ -44,50 +53,13 @@ function MainPosts() {
                                     <h4 className="binduz-er-title">Latest Post</h4>
                                 </div>
                                 <div className="binduz-er-sidebar-latest-post-box">
-                                    <div className="binduz-er-sidebar-latest-post-item">
-                                        <div className="binduz-er-thumb">
-                                            <img src="assets/images/latest-post-1.jpg" alt="latest"/>
-                                        </div>
-                                        <div className="binduz-er-content">
-                                            <span><i className="fal fa-calendar-alt"></i> 24th February 2020</span>
-                                            <h4 className="binduz-er-title"><a href="#">Introducing Android Earthquake Alerts</a></h4>
-                                        </div>
-                                    </div>
-                                    <div className="binduz-er-sidebar-latest-post-item">
-                                        <div className="binduz-er-thumb">
-                                            <img src="assets/images/latest-post-2.jpg" alt="latest"/>
-                                        </div>
-                                        <div className="binduz-er-content">
-                                            <span><i className="fal fa-calendar-alt"></i> 24th February 2020</span>
-                                            <h4 className="binduz-er-title"><a href="#">Loud and clear: AI is improving Assistant </a></h4>
-                                        </div>
-                                    </div>
-                                    <div className="binduz-er-sidebar-latest-post-item">
-                                        <div className="binduz-er-thumb">
-                                            <img src="assets/images/latest-post-3.jpg" alt="latest"/>
-                                        </div>
-                                        <div className="binduz-er-content">
-                                            <span><i className="fal fa-calendar-alt"></i> 24th February 2020</span>
-                                            <h4 className="binduz-er-title"><a href="#">Tips and shortcuts for a more productive</a></h4>
-                                        </div>
-                                    </div>
-                                    <div className="binduz-er-sidebar-latest-post-item">
-                                        <div className="binduz-er-thumb">
-                                            <img src="assets/images/latest-post-4.jpg" alt="latest"/>
-                                        </div>
-                                        <div className="binduz-er-content">
-                                            <span><i className="fal fa-calendar-alt"></i> 24th February 2020</span>
-                                            <h4 className="binduz-er-title"><a href="#">Sparks of inspiration to the new trend 2021</a></h4>
-                                        </div>
-                                    </div>
+                                    {
+                                        techReview.slice(0, 6).map(tech => (
+                                            <LastestPost key={( tech.title)} news={tech}/>
+                                        ))
+                                    }
+                                    
                                 </div>
-                            </div>
-                            <div className="binduz-er-sidebar-add-box mt-40">
-                                <div className="binduz-er-logo">
-                                    <a href="#"><img src="assets/images/logo-2.png" alt=""/></a>
-                                </div>
-                                <p>Built with amazing platform & framwork. You can use anyway in blog, news & magazine.</p>
-                                <a className="binduz-er-main-btn" href="#">Purchase Now</a>
                             </div>
                         </div>
                     </div>

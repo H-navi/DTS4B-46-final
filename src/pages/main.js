@@ -15,7 +15,7 @@ import Footer from '../containers/Footer';
 function MainPage() {
   return (
     <div className="Main">
-      <HeaderRecomendation/>
+      {/* <HeaderRecomendation/> */}
       <Header/>
       <Sliders/>
       {/* <Trending/> */}
