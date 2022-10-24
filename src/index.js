@@ -5,6 +5,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 
 import App from './App';
 import PrivateComponent from './components/PrivateComponent';
+import DetailPost from './containers/DetailPost';
 import Login from './containers/login';
 import Register from './containers/register';
 import MainPage from './pages/main';
@@ -22,11 +23,13 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Register />
       </PrivateComponent>
     } />
-    {/* <Route path="register" element={
-      <PrivateComponent loginOnly={false}>
-        <Register />
+
+    <Route path="detail" element={
+      <PrivateComponent loginOnly={true}>
+        <DetailPost/>
       </PrivateComponent>
-    } /> */}
+    } />
+
   </Route>));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

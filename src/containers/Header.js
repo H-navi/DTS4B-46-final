@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import UserLog from '../components/UserLog';
 function Header() {
     return (
         <Fragment>
@@ -50,15 +51,7 @@ function Header() {
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div className="binduz-er-navbar-btn d-flex">
-                                            <div className="binduz-er-widget d-flex">
-                                                <a className="binduz-er-news-search-open" href="#"><i className="far fa-search"></i></a>
-                                                <a href="#"><i className="far fa-user"></i></a>
-                                            </div>
-                                            <span className="binduz-er-toggle-btn binduz-er-news-canvas_open d-block d-lg-none">
-                                                <i className="fal fa-bars"></i>
-                                            </span>
-                                        </div>
+                                        <UserLog/>
                                     </nav>
                                 </div>
                             </div>
