@@ -6,6 +6,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import App from './App';
 import PrivateComponent from './components/PrivateComponent';
 import Login from './containers/login';
+import Register from './containers/register';
 import MainPage from './pages/main';
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -14,6 +15,11 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="login" element={
       <PrivateComponent loginOnly={false}>
         <Login />
+      </PrivateComponent>
+    } />
+    <Route path="register" element={
+      <PrivateComponent loginOnly={false}>
+        <Register />
       </PrivateComponent>
     } />
     {/* <Route path="register" element={

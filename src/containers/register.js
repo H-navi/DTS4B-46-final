@@ -4,13 +4,13 @@ import { Fragment } from 'react';
 import HeaderLogin from '../components/login/headerLogin';
 import { Link, useNavigate } from 'react-router-dom';
 
-import useUserStore, { selectErrorLogin, selectOnLogin, selectUserReady } from '../store/user';
+import useUserStore, { selectErrorRegister, selectOnRegister, selectUserReady } from '../store/user';
 
-const Login = () => {
+const Register = () => {
     const navigate = useNavigate();
-    const onLogin = useUserStore(selectOnLogin);
+    const onRegister = useUserStore(selectOnRegister);
     const userReady = useUserStore(selectUserReady);
-    const errorLogin = useUserStore(selectErrorLogin);
+    const errorRegister = useUserStore(selectErrorRegister);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -18,7 +18,7 @@ const Login = () => {
         const email = data.get('email');
         const password = data.get('password');
 
-        await onLogin(email, password);
+        await onRegister(email, password);
 
         if (userReady) {
             navigate("/");
@@ -50,14 +50,13 @@ const Login = () => {
                                                     <i className="fal fa-envelope"></i>
                                             </div>
                                         </div>
-                                        <span className='bg-danger'>{errorLogin}</span>
+                                        <span className='bg-danger'>{errorRegister}</span>
                                     </div>
                                     <button type='submit' className="binduz-er-main-btn">Submit</button>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </Fragment>
@@ -65,4 +64,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default Register;
