@@ -17,7 +17,7 @@ const NewsSlider = ({ news }) => {
                                 </div>
                             </div>
                             <div className="binduz-er-hero-title">
-                                <h3 className="binduz-er-title"><a href="#">{news.title}</a></h3>
+                                <h3 className="binduz-er-title"><a href={`/detail?url=${(news.key)}`}>{news.title}</a></h3>
                             </div>
                             <div className="binduz-er-meta-author">
                                 <div className="binduz-er-author">

@@ -9,7 +9,7 @@ const LastestPost = ({ news }) => {
             </div>
             <div className="binduz-er-content">
                 <span><i className="fal fa-calendar-alt"></i> {news.time}</span>
-                <h4 className="binduz-er-title"><a href="#"> {news.title}</a></h4>
+                <h4 className="binduz-er-title"><a href={`/detail?url=${(news.key)}`}> {news.title}</a></h4>
             </div>
         </div>
     );

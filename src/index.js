@@ -24,11 +24,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       </PrivateComponent>
     } />
 
-    <Route path="detail" element={
-      <PrivateComponent loginOnly={true}>
-        <DetailPost/>
-      </PrivateComponent>
-    } />
+    <Route path="detail" element={<DetailPost />} />
 
   </Route>));
 

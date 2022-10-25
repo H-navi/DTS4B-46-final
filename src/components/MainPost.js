@@ -1,7 +1,9 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const MainPostNews = ({ news }) => {
+
     return (
         <div className="col-xl-4 col-lg-6 col-md-6">
             <div className="binduz-er-main-posts-item">
@@ -19,7 +21,7 @@ const MainPostNews = ({ news }) => {
                             </div>
                         </div>
                         <div className="binduz-er-trending-news-list-title">
-                            <h4 className="binduz-er-title"><a href="#">{news.title}</a></h4>
+                            <h4 className="binduz-er-title"><a href={`/detail?url=${(news.key)}`} >{news.title}</a></h4>
                             <p>{news.desc}</p>
                         </div>
                     </div>
