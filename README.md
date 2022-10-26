@@ -77,6 +77,7 @@ News website built with react JS using unofficial api from media game "The Lazy 
 
 
 ## Preview
+<a href="https://github.com/H-navi/DTS4B-46-final/raw/main/preview.gif">PREVIEW</a>
 <img src="https://github.com/H-navi/DTS4B-46-final/raw/main/preview.gif" />
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
