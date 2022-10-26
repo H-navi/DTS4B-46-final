@@ -24,7 +24,7 @@
     <br />
     <br />
     <br />
-    <a href="https://hanafi.schoolfund.my.id/"><h1>View Demo</h1></a>
+    <a href="https://hanafi.schoolfund.my.id/">VIEW DEMO</a>
     ·
   </p>
 </div>
