@@ -14,9 +14,9 @@ function Header() {
                                         <div className="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                             <ul className="navbar-nav m-auto">
                                                 <li className="nav-item active">
-                                                    <a className="nav-link" href={'/'} key={'home'}>Home</a>
+                                                    <a className="nav-link" href={'/'} key={'home'}><i className="fa fa-home"></i> Home</a>
                                                 </li>
-                                                <li className="nav-item">
+                                                {/* <li className="nav-item">
                                                     <a className="nav-link" href="archived.html">Archived </a>
                                                 </li>
                                                 <li className="nav-item">
@@ -34,7 +34,7 @@ function Header() {
                                                 </li>
                                                 <li className="nav-item">
                                                     <a className="nav-link" href="contact.html">Contact</a>
-                                                </li>
+                                                </li> */}
                                             </ul>
                                         </div>
                                         <UserLog/>

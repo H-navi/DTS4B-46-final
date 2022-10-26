@@ -113,7 +113,7 @@ function Footer() {
                     <div className="row align-items-center">
                         <div className="col-lg-6">
                             <div className="binduz-er-copyright-text">
-                                <p>Copyright By@<span>QuomodoTheme</span> - 2021</p>
+                                <p>Copyright By@<span>Hnavi</span> - 2099</p>
                             </div>
                         </div>
                         <div className="col-lg-6">
